@@ -8,4 +8,4 @@ Home
 
 About
 
-Contact
+Contact -> install emailjs-com for send the mail data from conatact page
