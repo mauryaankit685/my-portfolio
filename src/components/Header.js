@@ -1,8 +1,30 @@
-import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "./firebase/firebase";
+
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const [user, setUser] = useState(null);
+
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        await signOut(auth);
+        localStorage.removeItem("token");
+        navigate("/login");
+
+    };
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+
+        });
+        return () => unsubscribe();
+    }, [])
+
 
     return (
         <nav className="bg-blue-600 text-white shadow-md">
@@ -29,11 +51,28 @@ export default function Header() {
                                 ? "text-yellow-300 font-semibold"
                                 : "hover:text-gray-200"
                         }>Contact</NavLink>
-                        <NavLink to="/login" className={({ isActive }) =>
-                            isActive
-                                ? "text-yellow-300 font-semibold"
-                                : "hover:text-gray-200"
-                        }>Login</NavLink>
+
+                        {user ? (
+
+                            <button
+                                onClick={handleLogout}
+                                className="ml-4 bg-red-500 px-3 py-1 rounded-lg hover:bg-red-600"
+                            >
+                                Logout
+                            </button>
+                        ) : (
+
+                            <NavLink to="/login" lassName={({ isActive }) =>
+                                isActive
+                                    ? "text-yellow-300 font-semibold"
+                                    : "hover:text-gray-200"
+                            }>Login</NavLink>
+                        )}
+
+                        {user &&
+                            <p>Welcome, {user.displayName || user.email} 👋</p>
+                        }
+
                     </div>
 
                     {/* For Mobile  */}
@@ -58,7 +97,25 @@ export default function Header() {
                     <Link to="/" className="block hover:text-gray-200">Home</Link>
                     <Link to="/about" className="block hover:text-gray-200">About</Link>
                     <Link to="/contact" className="block hover:text-gray-200">Contact</Link>
-                    <Link to="/login" className="block hover:text-gray-200">Login</Link>
+                    {
+                        user ? (
+
+                            <button
+                                onClick={handleLogout}
+                                className="text-red-500"
+                            >
+                                Logout
+                            </button>
+                        ) : (<Link to="/login" className="block hover:text-gray-200">Login</Link>)
+                    }
+
+                    <nav>
+                        {user ? (
+                            <p>Welcome, {user.displayName || user.email} 👋</p>
+                        ) : (
+                            <p></p>
+                        )}
+                    </nav>
                 </div>
             )}
         </nav>
