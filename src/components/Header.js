@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "./firebase/firebase";
+import { useAuth } from "../util/useAuth";
+
 
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
-    const [user, setUser] = useState(null);
 
+    const { user } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = async () => {
@@ -17,13 +19,13 @@ export default function Header() {
 
     };
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
+    // useEffect(() => {
+    //     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    //         setUser(currentUser);
 
-        });
-        return () => unsubscribe();
-    }, [])
+    //     });
+    //     return () => unsubscribe();
+    // }, [])
 
 
     return (
@@ -53,13 +55,14 @@ export default function Header() {
                         }>Contact</NavLink>
 
                         {user ? (
-
-                            <button
-                                onClick={handleLogout}
-                                className="ml-4 bg-red-500 px-3 py-1 rounded-lg hover:bg-red-600"
-                            >
-                                Logout
-                            </button>
+                            <><p className="w-25">Welcome, {user.displayName || user.email}</p>
+                                <button
+                                    onClick={handleLogout}
+                                    className="ml-4 bg-red-500 px-3 py-1 rounded-lg hover:bg-red-600"
+                                >
+                                    Logout
+                                </button>
+                            </>
                         ) : (
 
                             <NavLink to="/login" lassName={({ isActive }) =>
@@ -68,10 +71,6 @@ export default function Header() {
                                     : "hover:text-gray-200"
                             }>Login</NavLink>
                         )}
-
-                        {user &&
-                            <p>Welcome, {user.displayName || user.email} 👋</p>
-                        }
 
                     </div>
 
@@ -99,23 +98,17 @@ export default function Header() {
                     <Link to="/contact" className="block hover:text-gray-200">Contact</Link>
                     {
                         user ? (
-
-                            <button
-                                onClick={handleLogout}
-                                className="text-red-500"
-                            >
-                                Logout
-                            </button>
+                            <><p>Welcome, {user.displayName || user.email} </p>
+                                <button
+                                    onClick={handleLogout}
+                                    className="text-red-500"
+                                >
+                                    Logout
+                                </button>
+                            </>
                         ) : (<Link to="/login" className="block hover:text-gray-200">Login</Link>)
                     }
 
-                    <nav>
-                        {user ? (
-                            <p>Welcome, {user.displayName || user.email} 👋</p>
-                        ) : (
-                            <p></p>
-                        )}
-                    </nav>
                 </div>
             )}
         </nav>

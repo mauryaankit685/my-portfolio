@@ -21,7 +21,7 @@ installed-------------------
 react router dom
 tailwind css
 emailJs
-firebase 
+firebase -> npm run build -> npx firebase deploy
 
 
 

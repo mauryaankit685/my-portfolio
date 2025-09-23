@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Products from './components/Products';
 import PublicRoute from './components/PublicRoute';
 
+
 function App() {
 
   const browserRoter = createBrowserRouter([
