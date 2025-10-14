@@ -14,7 +14,7 @@ function Body() {
                         Hi, I'm Ankit Maurya👋
                     </h1>
                     <p className="mt-4 text-lg text-gray-600">
-                        A Frontend Developer passionate about building modern, responsive web apps using React, Redux Toolkit, JavaScript and Tailwind.
+                        A Frontend Developer passionate about building modern, responsive web apps using React, Redux Toolkit, jQuery, TypeScript, Node Js, JavaScript and Tailwind.
                     </p>
                     <a
                         href={resume}
