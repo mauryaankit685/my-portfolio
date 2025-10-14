@@ -36,6 +36,8 @@ function About() {
                             <li className="bg-white shadow p-3 rounded-md text-center">ReactJS</li>
                             <li className="bg-white shadow p-3 rounded-md text-center">Redux Toolkit</li>
                             <li className="bg-white shadow p-3 rounded-md text-center">JavaScript (ES6+)</li>
+                            <li className="bg-white shadow p-3 rounded-md text-center">TypeScript</li>
+                            <li className="bg-white shadow p-3 rounded-md text-center">Basic NodeJs</li>
                             <li className="bg-white shadow p-3 rounded-md text-center">jQuery</li>
                             <li className="bg-white shadow p-3 rounded-md text-center">HTML5</li>
                             <li className="bg-white shadow p-3 rounded-md text-center">CSS3</li>
