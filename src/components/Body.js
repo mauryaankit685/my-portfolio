@@ -79,6 +79,27 @@ function Body() {
                         description="Designing responsive layouts and animations with CSS3."
                     />
 
+                    <SkillCard
+                        title="Tailwind CSS"
+                        img="https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
+                        bg="bg-cyan-200"
+                        description="Building modern, responsive UIs efficiently using Tailwind CSS utility classes."
+                    />
+
+                    <SkillCard
+                        title="TypeScript"
+                        img="https://cdn.worldvectorlogo.com/logos/typescript.svg"
+                        bg="bg-blue-100"
+                        description="Enhancing React applications with strong typing and improved code reliability using TypeScript."
+                    />
+
+                    <SkillCard
+                        title="Node.js (Basics)"
+                        img="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg"
+                        bg="bg-green-200"
+                        description="Understanding of backend fundamentals using Node.js for APIs and server-side development."
+                    />
+
                 </div>
             </section>
         </main>
