@@ -58,9 +58,10 @@ function Contact() {
                             🏠 Village Sleemnadab, Katni (483440), Madhya Pradesh
                         </p>
                         <p className="text-gray-700">
-                            🔗 <a href="https://github.com/mauryaankit685" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                            🔗
+                            {/* <a href="https://github.com/mauryaankit685" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                                 GitHub
-                            </a> |
+                            </a> | */}
                             <a href="https://www.linkedin.com/in/ankit-maurya-2a0a3b186/" target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-600 hover:underline">
                                 LinkedIn
                             </a>

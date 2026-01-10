@@ -1,6 +1,6 @@
 import React from "react";
 import myPhoto from "../assets/myphoto.jpg";
-import resume from "../assets/MyResume.pdf";
+import resume from "../assets/Ankit.pdf";
 import jsLogo from "../assets/js.png";
 import redux from "../assets/redux.png";
 function Body() {
@@ -14,7 +14,7 @@ function Body() {
                         Hi, I'm Ankit Maurya👋
                     </h1>
                     <p className="mt-4 text-lg text-gray-600">
-                        A Frontend Developer passionate about building modern, responsive web apps using React, Redux Toolkit, jQuery, TypeScript, Node Js, JavaScript and Tailwind.
+                        A Frontend Developer passionate about building modern, responsive web apps using React, Redux Toolkit, jQuery, JavaScript and Tailwind.
                     </p>
                     <a
                         href={resume}
@@ -86,19 +86,19 @@ function Body() {
                         description="Building modern, responsive UIs efficiently using Tailwind CSS utility classes."
                     />
 
-                    <SkillCard
+                    {/* <SkillCard
                         title="TypeScript"
                         img="https://cdn.worldvectorlogo.com/logos/typescript.svg"
                         bg="bg-blue-100"
                         description="Enhancing React applications with strong typing and improved code reliability using TypeScript."
-                    />
+                    /> */}
 
-                    <SkillCard
+                    {/* <SkillCard
                         title="Node.js (Basics)"
                         img="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg"
                         bg="bg-green-200"
                         description="Understanding of backend fundamentals using Node.js for APIs and server-side development."
-                    />
+                    /> */}
 
                 </div>
             </section>

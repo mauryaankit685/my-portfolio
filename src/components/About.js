@@ -24,7 +24,7 @@ function About() {
                         <h2 className="text-3xl font-bold text-gray-800 mb-6">About Me</h2>
                         <p className="text-lg text-gray-700 leading-relaxed mb-6">
                             I am a proactive <span className="font-semibold">Application Developer</span> with
-                            <span className="font-semibold"> 4.5 years of experience</span>, specializing in
+                            <span className="font-semibold"> 4.9 years of experience</span>, specializing in
                             <span className="font-semibold"> ReactJS, JavaScript, and modern web technologies</span>.
                             My focus is on building efficient, scalable, and user-friendly applications.
                             Currently, I am working as an <b>Application Developer</b> at <b>MetrixLab a Toluna company</b>.
@@ -36,8 +36,8 @@ function About() {
                             <li className="bg-white shadow p-3 rounded-md text-center">ReactJS</li>
                             <li className="bg-white shadow p-3 rounded-md text-center">Redux Toolkit</li>
                             <li className="bg-white shadow p-3 rounded-md text-center">JavaScript (ES6+)</li>
-                            <li className="bg-white shadow p-3 rounded-md text-center">TypeScript</li>
-                            <li className="bg-white shadow p-3 rounded-md text-center">Basic NodeJs</li>
+                            {/* <li className="bg-white shadow p-3 rounded-md text-center">TypeScript</li> */}
+                            {/* <li className="bg-white shadow p-3 rounded-md text-center">Basic NodeJs</li> */}
                             <li className="bg-white shadow p-3 rounded-md text-center">jQuery</li>
                             <li className="bg-white shadow p-3 rounded-md text-center">HTML5</li>
                             <li className="bg-white shadow p-3 rounded-md text-center">CSS3</li>
