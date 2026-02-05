@@ -1,6 +1,6 @@
 import React from "react";
 import myPhoto from "../assets/myphoto.jpg";
-import resume from "../assets/Ankit.pdf";
+import resume from "../assets/Ankit_Maurya_Resume.pdf";
 import jsLogo from "../assets/js.png";
 import redux from "../assets/redux.png";
 function Body() {
