@@ -3,7 +3,7 @@ from flask_cors import CORS
 from rembg import remove
 from PIL import Image
 import io
-
+import os
 app = Flask(__name__)
 CORS(app)
 
