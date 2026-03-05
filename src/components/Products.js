@@ -26,10 +26,14 @@ function Products() {
             const formData = new FormData();
             formData.append("image", file);
 
-            const res = await fetch("https://my-portfolio-i3ge.onrender.com/remove-bg", { //https://my-portfolio-i3ge.onrender.com -> http://localhost:5000/remove-bg
+            const res = await fetch("https://my-portfolio-i3ge.onrender.com/remove-bg", {
                 method: "POST",
                 body: formData,
             });
+
+            if (!res.ok) {
+                throw new Error("Server failed");
+            }
 
             const blob = await res.blob();
             const url = URL.createObjectURL(blob);
