@@ -15,7 +15,11 @@ installed-------------------
 react router dom
 tailwind css
 emailJs
-firebase -> npm run build -> npx firebase deploy 
+firebase -> npm run build -> npx firebase deploy
+
+for backend using python for cleaning images
+backend-python
+
 
 
 
