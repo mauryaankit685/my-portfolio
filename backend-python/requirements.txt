@@ -4,4 +4,4 @@ rembg
 onnxruntime
 pillow
 numpy
-gunicorn app:app
+gunicorn
