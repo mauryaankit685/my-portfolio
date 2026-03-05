@@ -1,91 +1,91 @@
 import { useState } from "react";
 
 function Products() {
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [outputImage, setOutputImage] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [results, setResults] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
-    const handleDownload = () => {
-        if (!outputImage) return;
-
-        const link = document.createElement("a");
-        link.href = outputImage;
-        link.download = "background-removed.png";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
-    const handleRemoveBgMultiple = async () => {
+    // Handle file selection
+    const handleFileChange = (e) => {
+        const files = Array.from(e.target.files);
+        setSelectedFiles(files);
         setResults([]);
+        setError("");
+    };
+
+    // Remove background for multiple images
+    const handleRemoveBgMultiple = async () => {
+        if (selectedFiles.length === 0) {
+            setError("Please select images");
+            return;
+        }
+
         setLoading(true);
+        setError("");
+        setResults([]);
 
-        for (const file of selectedFiles) {
-            const formData = new FormData();
-            formData.append("image", file);
+        try {
+            const promises = selectedFiles.map(async (file) => {
+                const formData = new FormData();
+                formData.append("image", file);
 
-            const res = await fetch("https://my-portfolio-i3ge.onrender.com/remove-bg", {
-                method: "POST",
-                body: formData,
+                const res = await fetch(
+                    "https://my-portfolio-i3ge.onrender.com/remove-bg",
+                    {
+                        method: "POST",
+                        body: formData,
+                    }
+                );
+
+                if (!res.ok) {
+                    const text = await res.text();
+                    throw new Error(text || "Server error");
+                }
+
+                const blob = await res.blob();
+                const outputUrl = URL.createObjectURL(blob);
+
+                return {
+                    original: URL.createObjectURL(file),
+                    output: outputUrl,
+                };
             });
 
-            if (!res.ok) {
-                throw new Error("Server failed");
-            }
-
-            const blob = await res.blob();
-            const url = URL.createObjectURL(blob);
-
-            setResults((prev) => [...prev, { original: file, output: url }]);
+            const processed = await Promise.all(promises);
+            setResults(processed);
+        } catch (err) {
+            console.error(err);
+            setError("Background removal failed");
         }
 
         setLoading(false);
     };
-    // const handleRemoveBg = async () => {
-    //     if (!selectedFile) {
-    //         setError("Please select an image");
-    //         return;
-    //     }
 
-    //     setError("");
-    //     setLoading(true);
-
-    //     const formData = new FormData();
-    //     formData.append("image", selectedFile);
-
-    //     try {
-    //         const res = await fetch("http://localhost:5000/remove-bg", {
-    //             method: "POST",
-    //             body: formData,
-    //         });
-
-    //         if (!res.ok) {
-    //             throw new Error("Background removal failed");
-    //         }
-
-    //         const blob = await res.blob();
-    //         const imageUrl = URL.createObjectURL(blob);
-    //         setOutputImage(imageUrl);
-    //     } catch (err) {
-    //         setError(err.message);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
+    // Download image
+    const handleDownload = (url, index) => {
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `background-removed-${index}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    };
 
     return (
         <div className="min-h-screen bg-gray-100 p-6">
-            <h1 className="text-2xl font-bold mb-4">Background Remover</h1>
+            <h1 className="text-2xl font-bold mb-4">AI Background Remover</h1>
 
+            {/* Upload Input */}
             <input
                 type="file"
                 accept="image/png, image/jpeg"
                 multiple
-                onChange={(e) => setSelectedFiles([...e.target.files])}
+                onChange={handleFileChange}
+                className="mb-4"
             />
 
+            {/* Remove Background Button */}
             <button
                 onClick={handleRemoveBgMultiple}
                 disabled={loading}
@@ -94,31 +94,24 @@ function Products() {
                 {loading ? "Processing..." : "Remove Background"}
             </button>
 
+            {/* Error Message */}
             {error && <p className="text-red-500 mt-3">{error}</p>}
 
-            <div className="mt-6 grid grid-cols-2 gap-6">
-                {selectedFile && (
-                    <div>
-                        <p className="font-medium mb-2">Original</p>
-                        <img
-                            src={URL.createObjectURL(selectedFile)}
-                            alt="original"
-                            className="rounded shadow"
-                        />
-                    </div>
-                )}
-
+            {/* Results */}
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                 {results.map((item, index) => (
-                    <div key={index} className="border p-3 rounded">
-                        <img src={item.output} className="max-h-32" alt="result" />
+                    <div key={index} className="bg-white p-4 rounded shadow">
+                        <p className="font-medium mb-2">Result</p>
+
+                        <img
+                            src={item.output}
+                            alt="result"
+                            className="rounded mb-3 max-h-64 object-contain"
+                        />
+
                         <button
-                            onClick={() => {
-                                const a = document.createElement("a");
-                                a.href = item.output;
-                                a.download = `output-${index}.png`;
-                                a.click();
-                            }}
-                            className="mt-2 bg-green-500 text-white px-3 py-1 rounded"
+                            onClick={() => handleDownload(item.output, index)}
+                            className="bg-green-500 text-white px-3 py-1 rounded"
                         >
                             Download
                         </button>
@@ -128,7 +121,5 @@ function Products() {
         </div>
     );
 }
-
-
 
 export default Products;

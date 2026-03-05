@@ -10,10 +10,6 @@ CORS(app)
 # Load model only once when server starts
 session = new_session("u2netp")
 
-@app.route("/")
-def home():
-    return "Background Removal API Running"
-
 @app.route("/remove-bg", methods=["POST"])
 def remove_bg():
     if "image" not in request.files:
@@ -24,14 +20,18 @@ def remove_bg():
     try:
         input_image = Image.open(file.stream).convert("RGBA")
 
-        # Use already loaded model
         output = remove(input_image, session=session)
 
         img_io = io.BytesIO()
         output.save(img_io, "PNG")
         img_io.seek(0)
 
-        return send_file(img_io, mimetype="image/png")
+        return send_file(
+            img_io,
+            mimetype="image/png",
+            as_attachment=False
+        )
 
     except Exception as e:
+        print("ERROR:", e)
         return {"error": str(e)}, 500
