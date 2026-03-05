@@ -26,7 +26,7 @@ function Products() {
             const formData = new FormData();
             formData.append("image", file);
 
-            const res = await fetch("https://my-portfolio-i3ge.onrender.com", { //https://my-portfolio-i3ge.onrender.com -> http://localhost:5000/remove-bg
+            const res = await fetch("https://my-portfolio-i3ge.onrender.com/remove-bg", { //https://my-portfolio-i3ge.onrender.com -> http://localhost:5000/remove-bg
                 method: "POST",
                 body: formData,
             });

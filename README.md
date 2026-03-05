@@ -16,6 +16,7 @@ react router dom
 tailwind css
 emailJs
 firebase -> npm run build -> npx firebase deploy
+https://my-portfolio-d2b90.web.app
 
 for backend using python for cleaning images
 backend-python
