@@ -16,12 +16,12 @@ function Body() {
                     <p className="mt-4 text-lg text-gray-600">
                         A Frontend Developer passionate about building modern, responsive web apps using React, Redux Toolkit, jQuery, JavaScript and Tailwind.
                     </p>
-                    <a
+                    {/* <a
                         href={resume}
                         className="inline-block mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
                     >
                         Download Resume
-                    </a>
+                    </a> */}
                 </div>
 
                 <div className="mt-8 md:mt-0 md:ml-12">
@@ -40,7 +40,7 @@ function Body() {
 
                     <SkillCard
                         title="React"
-                        img="https://cdn.worldvectorlogo.com/logos/react-2.svg"
+                        img="https://static.cdnlogo.com/logos/r/85/react.svg"
                         bg="bg-blue-100"
                         description="Building dynamic and reusable UI components with modern React."
                     />
@@ -94,7 +94,7 @@ function Body() {
                     />
 
                     <SkillCard
-                        title="Node.js (Basics)"
+                        title="Node.js"
                         img="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg"
                         bg="bg-green-200"
                         description="Understanding of backend fundamentals using Node.js for APIs and server-side development."

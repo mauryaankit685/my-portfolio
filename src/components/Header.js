@@ -69,7 +69,10 @@ export default function Header() {
                                 isActive
                                     ? "text-yellow-300 font-semibold"
                                     : "hover:text-gray-200"
-                            }>Login</NavLink>
+                            }>
+                                {/* Login */}
+
+                            </NavLink>
                         )}
 
                     </div>

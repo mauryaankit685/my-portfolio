@@ -8,10 +8,10 @@ function Footer() {
 
 
                 <div className="flex space-x-6 mt-4 md:mt-0">
-                    <a href="https://github.com/mauryaankit685" target="_blank" rel="noopener noreferrer"
+                    {/* <a href="https://github.com/mauryaankit685" target="_blank" rel="noopener noreferrer"
                         className="hover:text-white transition">
                         GitHub
-                    </a>
+                    </a> */}
                     <a href="https://www.linkedin.com/in/ankit-maurya-2a0a3b186/" target="_blank" rel="noopener noreferrer"
                         className="hover:text-white transition">
                         LinkedIn
