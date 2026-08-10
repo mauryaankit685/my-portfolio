@@ -109,7 +109,9 @@ export default function Header() {
                                     Logout
                                 </button>
                             </>
-                        ) : (<Link to="/login" className="block hover:text-gray-200">Login</Link>)
+                        ) : (<Link to="/login" className="block hover:text-gray-200">
+                            {/* Login */}
+                        </Link>)
                     }
 
                 </div>

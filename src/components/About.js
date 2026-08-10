@@ -24,7 +24,7 @@ function About() {
                         <h2 className="text-3xl font-bold text-gray-800 mb-6">About Me</h2>
                         <p className="text-lg text-gray-700 leading-relaxed mb-6">
                             I am a proactive <span className="font-semibold">Application Developer</span> with
-                            <span className="font-semibold"> 4.9 years of experience</span>, specializing in
+                            <span className="font-semibold"> 5+ years of experience</span>, specializing in
                             <span className="font-semibold"> ReactJS, JavaScript, and modern web technologies</span>.
                             My focus is on building efficient, scalable, and user-friendly applications.
                             Currently, I am working as an <b>Application Developer</b> at <b>MetrixLab a Toluna company</b>.
